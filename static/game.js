@@ -14,10 +14,8 @@ initGame()
 
 function initGame() {
   let snakeHead = snakeBody[snakeBody.length - 1];
-  if (snakeDeath(snakeHead, snakeBody)) {
-    if (confirm('Game over' +" Your score is: "+ foodcounter +" points\nPlay again?")) {
-      window.location.reload(true);
-    }
+  if (snakeDeath(snakeHead, snakeBody, bombSpot)) {
+    alert('Game over' +" Your score is: "+ foodcounter +" points")
   }
   else {
     moveSnake(snakeBody, snakeLength)
