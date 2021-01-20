@@ -1,4 +1,4 @@
-import { drawFood, drawSnake } from './view.js'
+import { drawFood, drawSnake, drawBomb } from './view.js'
 import { moveSnake } from './control.js'
 
 let speed = 100
@@ -7,6 +7,7 @@ let gameBox = document.getElementById('box')
 let scorepoints = document.getElementById('points')
 let snakeLength = 3
 let foodSpot = { x: 0, y: 0 }
+let bombSpot = { x: 1, y: 1 }
 let foodcounter = 0
 initGame()
 
@@ -24,6 +25,7 @@ function initGame() {
     scorepoints.innerHTML = points();
     drawSnake(snakeBody, gameBox)
     foodSpot = drawFood(snakeBody, gameBox, foodSpot)
+    bombSpot = drawBomb(snakeBody, gameBox, foodSpot, bombSpot)
     eatFood(snakeHead)
     setTimeout(initGame, speed)
   }
@@ -47,7 +49,7 @@ function eatFood(snakeHead) {
 
 }
 
-function snakeDeath(snakeHead, snakeBody) {
+function snakeDeath(snakeHead, snakeBody, bombSpot) {
   if (snakeBody.length > 4) {
     let headlessSnake = snakeBody.slice(0, snakeBody.length - 1);
     for (let part of headlessSnake) {
@@ -58,6 +60,11 @@ function snakeDeath(snakeHead, snakeBody) {
   }
   if (snakeHead.x < 1 || snakeHead.x > 25 || snakeHead.y < 1 || snakeHead.y > 25) {
     return true
+  }
+
+  if (snakeHead.x == bombSpot.x && snakeHead.y == bombSpot.y) {
+    return true
+
   }
 
   return false

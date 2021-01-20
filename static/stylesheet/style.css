@@ -29,4 +29,7 @@ body {
       border-radius: 25px;
   }
 
-
+  .bomb {
+    background-color: hsl(0, 100%, 50%);
+    border: .25vmin solid black;
+  }

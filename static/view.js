@@ -30,6 +30,25 @@ export function drawFood(snakeBody, gameBox, foodSpot) {
     return foodSpot;
 }
 
+export function drawBomb(snakeBody, gameBox, foodSpot, bombSpot) {
+    if (bombSpot.x == 1 && bombSpot.y == 1) {
+        bombSpot = { x: getRandomIntInclusive(1, 25), y: getRandomIntInclusive(1, 25) };
+    }
+    else {
+        if (!(bombSpot in snakeBody || bombSpot in foodSpot)) {
+            let bomb = document.createElement('div');
+            bomb.style.gridRowStart = bombSpot.y;
+            bomb.style.gridColumnStart = bombSpot.x;
+            bomb.classList.add('bomb');
+            gameBox.appendChild(bomb);
+        }
+
+        else {
+            drawBomb();
+        }
+    }
+    return bombSpot;
+}
 
 
 function getRandomIntInclusive(min, max) {
