@@ -19,6 +19,9 @@ function initGame() {
     if (confirm('Game over' +" Your score is: "+ foodcounter +" points\nPlay again?")) {
       window.location.reload(true);
     }
+    else {
+      window.location.replace("menu.html");
+    }
   }
   else {
     moveSnake(snakeBody, snakeLength)
