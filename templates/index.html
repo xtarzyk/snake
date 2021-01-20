@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Javascript Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/style.css') }}"/>
+    <meta charset="UTF-8">
+    <!-- http://proger.i-forge.net/The_smallest_transparent_pixel/ -->
+    <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=">
+    <script src="{{ url_for('static', filename='game.js') }}" defer type="module"></script>
+
+
+</head>
+
+<body>
+
+<div class='game'>
+
+    <div class="box" id='box'></div>
+    <div class='points' id="points">
+    </div>
+    <div class="msg" id='msg'>
+        <p id="msg-text"></p>
+        <a href="{{ url_for('send_result') }}" class="myButton">Send</a>
+        <a href="{{ url_for('menu') }}" class="myButton">Cancel</a>
+    </div>
+</div>
+</body>
+
+</html>

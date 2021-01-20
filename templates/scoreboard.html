@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/stylesheet/menuStyle.css" />
+    <title>Menu</title>
+</head>
+<body class="menu-body">
+{% for result in score_board %}
+{{ result.nick }} {{ result.points }} {{ result.game_date }}
+    <br>
+{% endfor %}
+</body>
+</html>
