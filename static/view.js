@@ -1,3 +1,4 @@
+let scorePoints = document.getElementById('points');
 
 export function drawSnake(snakeBody, gameBox) {
     for (let part of snakeBody) {
@@ -49,6 +50,11 @@ export function drawBomb(snakeBody, gameBox, foodSpot, bombSpot) {
     }
     return bombSpot;
 }
+
+export function drawPoints(foodCounter) {
+    scorePoints.innerHTML = 'Points: ' + foodCounter;
+}
+
 
 
 function getRandomIntInclusive(min, max) {

@@ -53,6 +53,38 @@ export function moveSnake(snakeBody, snakeLength) {
     }
 }
 
+export function snakeDeath(snakeHead, snakeBody, bombSpot) {
+    if (deathByBombs(snakeHead, snakeBody, bombSpot) || deathByEdges(snakeHead, snakeBody, bombSpot) ||
+        deathByEdges(snakeHead, snakeBody, bombSpot)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function deathByUroboros(snakeHead, snakeBody, bombSpot) {
+    if (snakeBody.length > 4) {
+        let headlessSnake = snakeBody.slice(0, snakeBody.length - 1);
+        for (let part of headlessSnake) {
+            if (part.x === snakeHead.x && part.y === snakeHead.y) {
+                return true
+            }
+        }
+    }
+}
+
+function deathByEdges(snakeHead, snakeBody, bombSpot) {
+    if (snakeHead.x < 1 || snakeHead.x > 25 || snakeHead.y < 1 || snakeHead.y > 25) {
+        return true
+    }
+}
+
+function deathByBombs(snakeHead, snakeBody, bombSpot) {
+    if (snakeHead.x === bombSpot.x && snakeHead.y === bombSpot.y) {
+        return true
+
+    }
+}
 
 
 
