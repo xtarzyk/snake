@@ -2,13 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/stylesheet/menuStyle.css" />
-    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/style.css') }}"/>
+    <title>Scoreboard</title>
 </head>
 <body class="menu-body">
-{% for result in score_board %}
-{{ result.nick }} {{ result.points }} {{ result.game_date }}
-    <br>
-{% endfor %}
+<table class="scoreboard" id="scoreboard">
+    <thead>
+    <tr>
+        <th>Position</th>
+        <th>Nickname</th>
+        <th>Points</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for result in score_board %}
+    <tr>
+        <td> {{ loop.index }}</td>
+        <td> {{ result.nick }}</td>
+        <td> {{ result.points }}</td>
+        <td> {{ result.game_date }}</td>
+    </tr>
+
+    {% endfor %}
+
+    <tbody>
+</table>
 </body>
 </html>
