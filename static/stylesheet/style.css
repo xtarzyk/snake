@@ -6,30 +6,82 @@ body {
     align-items: center;
     margin: 0;
     background-color: grey;
-  }
+}
 
-  #box {
+#box {
     background-color: #bac700;
     width: 80vmin;
     height: 80vmin;
     display: grid;
     grid-template-rows: repeat(25, 1fr);
     grid-template-columns: repeat(25, 1fr);
-  }
+}
 
-  .snake {
+.snake {
     background-color: #2d2a24;
     /*border: .25vmin solid black;*/
-  }
+}
 
-  .food {
+.food {
     /*background-color: hsl(50, 100%, 50%);*/
 
     border: .25vmin solid black;
-      border-radius: 25px;
-  }
+    border-radius: 25px;
+}
 
-  .bomb {
+.bomb {
     background-color: hsl(0, 100%, 50%);
     border: .25vmin solid black;
-  }
+}
+
+.game {
+    position: relative;
+}
+
+.points {
+    font-size: x-large;
+    font-weight: bold;
+    top: 10px;
+    opacity: 0.8;
+    position: absolute;
+}
+
+.msg {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #6c7c7c;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+
+}
+
+.myButton {
+    box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color: #768d87;
+    border-radius: 5px;
+    border: 1px solid #566963;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 11px 23px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #2b665e;
+
+}
+
+.myButton:hover {
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color: #6c7c7c;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
