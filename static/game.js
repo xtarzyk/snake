@@ -6,7 +6,7 @@ let snakeBody = [{x: 10, y: 10}];
 let gameBox = document.getElementById('box');
 let snakeLength = 3;
 let foodSpot = {x: 0, y: 0};
-let bombSpot = {x: 1, y: 1};
+let bombSpot = {x: 0, y: 0};
 let foodCounter = 0;
 initGame()
 
@@ -32,8 +32,9 @@ function eatFood(snakeHead) {
     if (snakeHead.x === foodSpot.x && snakeHead.y === foodSpot.y) {
         snakeLength += 1;
         foodSpot = {x: 0, y: 0};
-        speed = speed - speed / 6;
+        speed = speed - speed / 10;
         foodCounter++
+        bombSpot = {x: 0, y: 0};
         return foodCounter
     }
 
