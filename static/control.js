@@ -47,7 +47,8 @@ export function moveSnake(snakeBody, snakeLength) {
         snakeBody.shift();
     }
     else {
-        let newSnakePart = { x: snakeBody[snakeBody.length - 1].x + direction.x, y: snakeBody[snakeBody.length - 1].y + direction.y }
+        let newSnakePart = { x: snakeBody[snakeBody.length - 1].x + direction.x, y: snakeBody[snakeBody.length - 1].y
+                + direction.y }
         snakeBody.push(newSnakePart)
         return snakeBody
     }
@@ -55,7 +56,7 @@ export function moveSnake(snakeBody, snakeLength) {
 
 export function snakeDeath(snakeHead, snakeBody, bombSpot) {
     if (deathByBombs(snakeHead, snakeBody, bombSpot) || deathByEdges(snakeHead, snakeBody, bombSpot) ||
-        deathByEdges(snakeHead, snakeBody, bombSpot)) {
+        deathByUroboros(snakeHead, snakeBody, bombSpot)) {
         return true
     } else {
         return false
