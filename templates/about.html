@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About</title>
+    <title>How to play</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/about.css') }}"/>
 </head>
-<body>
-    <p>Jesteś prostokątnym wężem jedzącym kwadraty!!!!!!!!!! Uważaj na granicę kanciastego świata po którym przyszło Ci pełznąć! Nie zjedz własnego ogona! </p>
+<body class="about">
+<!-- <img src="instructions.jpg" alt="Snake game board"> -->
+<div></div>
+
+<p>Use arrow keys to move.<br><br>Eating <b>FOOD</b> increases your points and moving speed.<br><br>Eating <b>SLOW</b> slows you down.<br><br>If you eat a <b>BOMB</b> or hit a wall, you will die.<br><br>Enjoy!</p>
+<button class="bck"><a href="{{ url_for('menu')}}">back to menu</a></button>
 </body>
 </html>
