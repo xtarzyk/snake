@@ -1,13 +1,14 @@
-import {drawFood, drawSnake, drawBomb, drawPoints} from './view.js'
-import {moveSnake, snakeDeath} from './control.js'
+import {drawSnake, drawPoints, drawElement} from './view.js'
+import {moveSnake, snakeDeath, getElementPosition, getBannedSpots} from './control.js'
 
 let speed = 100;
 let snakeBody = [{x: 10, y: 10}];
 let gameBox = document.getElementById('box');
 let snakeLength = 3;
-let foodSpot = {x: 0, y: 0};
-let bombSpot = {x: 0, y: 0};
+let foodSpot = [{x: 0, y: 0}];
+let bombSpot = [{x: 0, y: 0}];
 let foodCounter = 0;
+let bannedSpots = []
 initGame()
 
 
@@ -16,28 +17,41 @@ function initGame() {
     if (snakeDeath(snakeHead, snakeBody, bombSpot)) {
         gameOver()
     } else {
+        getPositions()
         gameBox.innerHTML = '';
-        moveSnake(snakeBody, snakeLength);
-        drawPoints(foodCounter)
-        drawSnake(snakeBody, gameBox);
-        foodSpot = drawFood(snakeBody, gameBox, foodSpot);
-        bombSpot = drawBomb(snakeBody, gameBox, foodSpot, bombSpot);
+        draw()
         eatFood(snakeHead);
+        bannedSpots = getBannedSpots(bannedSpots, snakeBody, foodSpot, bombSpot)
         setTimeout(initGame, speed);
     }
 }
 
+function getPositions() {
+    moveSnake(snakeBody, snakeLength);
+    foodSpot = getElementPosition(foodSpot, bannedSpots);
+    bombSpot = getElementPosition(bombSpot, bannedSpots);
+}
+
+function draw() {
+    drawSnake(snakeBody, gameBox);
+    drawElement('food', foodSpot, gameBox)
+    drawElement('bomb', bombSpot, gameBox)
+    drawPoints(foodCounter)
+}
 
 function eatFood(snakeHead) {
-    if (snakeHead.x === foodSpot.x && snakeHead.y === foodSpot.y) {
-        snakeLength += 1;
-        foodSpot = {x: 0, y: 0};
-        speed = speed - speed / 10;
-        foodCounter++
-        bombSpot = {x: 0, y: 0};
-        return foodCounter
-    }
-
+    foodSpot.forEach(function (food, index) {
+        if (snakeHead.x === food.x && snakeHead.y === food.y) {
+            snakeLength += 1;
+            foodSpot[index] = {x: 0, y: 0};
+            speed = speed - speed / 10;
+            foodCounter++
+            bombSpot.forEach(function (bomb, index){
+                bombSpot[index] = {x: 0, y: 0};
+            })
+        }
+    })
+    return foodCounter
 }
 
 
