@@ -118,15 +118,24 @@ function banThese(spots, bannedSpots) {
 }
 
 
-export function getBannedSpots(bannedSpots, snakeBody, foodSpot, bombSpot) {
-    bannedSpots = []
-    banThese(snakeBody, bannedSpots)
-    banThese(foodSpot, bannedSpots)
-    banThese(bombSpot, bannedSpots)
+export function getBannedSpots(bannedSpots, snakeBody, foodSpot, bombSpot, slowSpot) {
+    bannedSpots = [];
+    banThese(snakeBody, bannedSpots);
+    banThese(foodSpot, bannedSpots);
+    banThese(bombSpot, bannedSpots);
+    banThese(slowSpot, bannedSpots);
     return bannedSpots
 }
 
-
+export function slow(snakeHead, slowSpot, speed) {
+    slowSpot.forEach(function (slow, index) {
+        if (snakeHead.x == slow.x && snakeHead.y == slow.y) {
+            speed = speed + speed/5
+            slowSpot[index] = { x: 0, y: 0}
+        }
+    })
+    return speed
+}
 
 
 

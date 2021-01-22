@@ -40,6 +40,12 @@ body {
     background-color: darkgreen;
 }
 
+.slow {
+    border: .25vmin solid black;
+    border-radius: 25px;
+    background-color: darkblue;
+}
+
 .bomb {
     background-image: url("bomb.png");
     background-color: hsl(0, 100%, 50%);
