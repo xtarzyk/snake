@@ -1,6 +1,7 @@
 import {drawSnake, drawPoints, drawElement} from './view.js'
 import {moveSnake, snakeDeath, getElementPosition, getBannedSpots} from './control.js'
 
+
 let speed = 100;
 let snakeBody = [{x: 10, y: 10}];
 let gameBox = document.getElementById('box');
@@ -26,11 +27,13 @@ function initGame() {
     }
 }
 
+
 function getPositions() {
     moveSnake(snakeBody, snakeLength);
     foodSpot = getElementPosition(foodSpot, bannedSpots);
     bombSpot = getElementPosition(bombSpot, bannedSpots);
 }
+
 
 function draw() {
     drawSnake(snakeBody, gameBox);
@@ -38,6 +41,7 @@ function draw() {
     drawElement('bomb', bombSpot, gameBox)
     drawPoints(foodCounter)
 }
+
 
 function eatFood(snakeHead) {
     foodSpot.forEach(function (food, index) {

@@ -12,6 +12,7 @@ export function drawSnake(snakeBody, gameBox) {
     }
 }
 
+
 export function drawElement(elementName, elementSpots, gameBox) {
     for (let elementSpot of elementSpots) {
         let newElement = document.createElement('div');
@@ -21,6 +22,7 @@ export function drawElement(elementName, elementSpots, gameBox) {
         gameBox.appendChild(newElement);
     }
 }
+
 
 export function drawPoints(foodCounter) {
     scorePoints.innerHTML = 'Points: ' + foodCounter;

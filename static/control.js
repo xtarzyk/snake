@@ -1,7 +1,9 @@
 import {getRandomPosition} from './util.js'
 
+
 let direction = {x: 0, y: 0};
 let lastDirection = {x: 5, y: 5};
+
 
 function getDirection() {
     window.addEventListener('keydown', press => {
@@ -40,6 +42,7 @@ function getDirection() {
     lastDirection = direction
 }
 
+
 export function moveSnake(snakeBody, snakeLength) {
     getDirection()
     if (snakeBody.length > snakeLength) {
@@ -53,6 +56,7 @@ export function moveSnake(snakeBody, snakeLength) {
         return snakeBody
     }
 }
+
 
 export function snakeDeath(snakeHead, snakeBody, bombSpot) {
     if (deathByBombs(snakeHead, snakeBody, bombSpot) || deathByEdges(snakeHead, snakeBody, bombSpot) ||
@@ -104,12 +108,15 @@ export function getElementPosition(elementSpots, bannedSpots) {
 
     return elementSpots
 }
+
+
 function banThese(spots, bannedSpots) {
     for (let spot of spots) {
         bannedSpots.push(spot)
     }
     return bannedSpots
 }
+
 
 export function getBannedSpots(bannedSpots, snakeBody, foodSpot, bombSpot) {
     bannedSpots = []
